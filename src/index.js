@@ -1,10 +1,5 @@
 import dataset from './my_weather_data.json';
-import { extent } from 'd3-array';
-import { axisBottom, axisLeft } from 'd3-axis';
-import { scaleLinear, scaleTime } from 'd3-scale';
-import { select } from 'd3-selection';
-import { line } from 'd3-shape';
-import { timeParse } from 'd3-time-format';
+import * as d3 from 'd3';
 
 function drawLineChart() {
   // BASICS
@@ -19,7 +14,7 @@ function drawLineChart() {
   // Accessor function for y-values
   const yAccessor = (d) => d.temperatureMax;
   // Accessor founction for x-values with date parser
-  const dateParser = timeParse('%Y-%m-%d');
+  const dateParser = d3.timeParse('%Y-%m-%d');
   const xAccessor = (d) => dateParser(d.date);
 
   // Set dimensions and properties
@@ -41,7 +36,7 @@ function drawLineChart() {
 
   // DRAWING
   //========================================================
-  const wrapper = select('#wrapper');
+  const wrapper = d3.select('#wrapper');
   const svg = wrapper
     .append('svg')
     .attr('width', dimensions.width)
@@ -55,8 +50,9 @@ function drawLineChart() {
     );
 
   // Y - scale
-  const yScale = scaleLinear()
-    .domain(extent(dataset, yAccessor))
+  const yScale = d3
+    .scaleLinear()
+    .domain(d3.extent(dataset, yAccessor))
     .range([dimensions.boundedHeight, 0]);
 
   // Rectangle for indicating freezing temperatures
@@ -70,14 +66,16 @@ function drawLineChart() {
     .attr('fill', '#e0f3f3');
 
   // X - scale
-  const xScale = scaleTime()
-    .domain(extent(dataset, xAccessor))
+  const xScale = d3
+    .scaleTime()
+    .domain(d3.extent(dataset, xAccessor))
     .range([0, dimensions.boundedWidth]);
 
-  console.log(extent(dataset, xAccessor));
+  console.log(d3.extent(dataset, xAccessor));
 
   // Line generator
-  const lineGenerator = line()
+  const lineGenerator = d3
+    .line()
     .x((d) => xScale(xAccessor(d)))
     .y((d) => yScale(yAccessor(d)));
 
@@ -89,10 +87,10 @@ function drawLineChart() {
     .attr('stroke-width', 2);
 
   // Adding the y and x axis
-  const yAxisGenerator = axisLeft().scale(yScale);
+  const yAxisGenerator = d3.axisLeft().scale(yScale);
   const yAxis = bounds.append('g').call(yAxisGenerator);
 
-  const xAxisGenerator = axisBottom().scale(xScale);
+  const xAxisGenerator = d3.axisBottom().scale(xScale);
   const xAxis = bounds
     .append('g')
     .call(xAxisGenerator)
