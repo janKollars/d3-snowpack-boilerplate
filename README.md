@@ -1,6 +1,10 @@
 # D3 Boilerplate with Snowpack
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+This repo is a minimal setup to work on D3 visualisations.
+
+Static assets such as the [`index.html`](/public/index.html) and the [`index.css`](/public/index.css) are located in the [`public`](/public) folder.
+
+Your entry point for the scripts should be in the [index.js](/src/index.js) in the [`src`](/src) folder. Data to be imported by the scripts can be placed there as well.
 
 ## Available Scripts
 
@@ -16,9 +20,3 @@ You will also see any lint errors in the console.
 
 Builds a static copy of your site to the `build/` folder.
 Your app is ready to be deployed!
-
-**For the best production performance:** Add a build bundler plugin like "@snowpack/plugin-webpack" or "@snowpack/plugin-parcel" to your `snowpack.config.json` config file.
-
-### Q: What about Eject?
-
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
