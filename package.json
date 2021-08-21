@@ -3,22 +3,22 @@
     "start": "snowpack dev",
     "build": "snowpack build",
     "test": "echo \"This template does not include a test runner by default.\" && exit 1",
-    "format": "prettier --write \"src/**/*.js\"",
-    "lint": "prettier --check \"src/**/*.js\""
+    "format": "prettier --write \"src/**.js\"",
+    "lint": "prettier --check \"src/**.js\""
   },
   "dependencies": {
-    "d3-array": "^2.4.0",
-    "d3-axis": "^1.0.12",
-    "d3-fetch": "^1.1.2",
-    "d3-scale": "^3.2.1",
-    "d3-selection": "^1.4.1",
-    "d3-shape": "^1.3.7",
-    "d3-time-format": "^2.2.3"
+    "d3-array": "^3.0.2",
+    "d3-axis": "^3.0.0",
+    "d3-fetch": "^3.0.1",
+    "d3-scale": "^4.0.0",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.0.1",
+    "d3-time-format": "^4.0.0"
   },
   "devDependencies": {
-    "@snowpack/plugin-parcel": "^1.3.0",
-    "parcel-bundler": "^1.12.4",
-    "prettier": "^2.0.0",
-    "snowpack": "^2.5.0"
+    "@snowpack/plugin-parcel": "^2.0.5",
+    "parcel-bundler": "^1.12.5",
+    "prettier": "^2.3.2",
+    "snowpack": "^3.8.6"
   }
 }
